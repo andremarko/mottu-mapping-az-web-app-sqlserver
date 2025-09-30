@@ -8,7 +8,7 @@ az webapp create --name "$WEBAPP_NAME" --resource-group $RESOURCE_GROUP --plan $
 
 az resource update --resource-group $RESOURCE_GROUP --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --name scm --parent sites/$WEBAPP_NAME --set properties.allow=true
 
-az webapp config appsettings set --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP --settings SPRING_DATASOURCE_USERNAME=$DB_ADMIN SPRING_DATASOURCE_PASSWORD=$DB_PASSWORD SPRING_DATASOURCE_URL=$JDBC_CONNECTION_STRING
+az webapp config appsettings set --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP --settings DB_ADMIN=$DB_ADMIN DB_PASSWORD=$DB_PASSWORD JDBC_CONNECTION_STRING="$JDBC_CONNECTION_STRING"
 
 az webapp restart --name $WEBAPP_NAME --resource-group $RESOURCE_GROUP
 
